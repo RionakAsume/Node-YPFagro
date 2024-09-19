@@ -2,10 +2,11 @@ import { Table, Column, Model, DataType, ForeignKey, AllowNull } from "sequelize
 import Role from "./Role.models";
 
 @Table({
-    tableName: 'user',
+    tableName: 'users',
     timestamps: false,
 })
 class User extends Model {
+    @AllowNull(false)
     @Column({
         type: DataType.STRING(20)
     })
@@ -22,12 +23,13 @@ class User extends Model {
     address: string;
 
     @Column({
-        type: DataType.INTEGER
+        type: DataType.STRING(15)
     })
-    phone: number;
+    phone: string;
 
     @Column({
         type: DataType.INTEGER
+      
     })
     dni: number;
 
@@ -36,17 +38,19 @@ class User extends Model {
     })
     email: string;
 
-        // @Column({
-    //     type:DataType.BOOLEAN
-    // })
-    // status:boolean;
+    @Column({
+        type: DataType.BOOLEAN,
+        defaultValue: true
+    })
+    status: boolean;
 
     // Relación uno a uno: Un usuario pertenece a un role
     @ForeignKey(() => Role)
+    @AllowNull(false)
     @Column({
         type: DataType.INTEGER
     })
-    roleId: number; 
+    roleId: number;
 }
 
 export default User;
