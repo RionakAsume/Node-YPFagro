@@ -18,6 +18,7 @@ async function conectDB(){
 conectDB();
 
 const server=express();
+
 server.use(express.json());
 
 server.use('/api/',authRoutes)

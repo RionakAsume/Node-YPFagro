@@ -10,10 +10,10 @@ class User extends Model {
     @Column({
         type: DataType.STRING(20)
     })
-    fullName: string;
+    full_name: string;
 
     @Column({
-        type: DataType.STRING(20)
+        type: DataType.STRING(64)
     })
     password: string;
 
