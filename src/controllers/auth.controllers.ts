@@ -1,7 +1,7 @@
 import User from "../models/User.models";
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
-import { TOKEN_SECRET } from "../config/token"
+//import { TOKEN_SECRET } from "../config/token"
 
 
 export const register = async (req, res) => {
@@ -26,7 +26,7 @@ export const register = async (req, res) => {
 
         jwt.sign({
             id: userSaved.id,
-        }, TOKEN_SECRET, {
+        }, process.env.TOKEN_SECRET, {
             expiresIn: "1d",
         }, (err, token) => {
             if (err) console.log(err)
